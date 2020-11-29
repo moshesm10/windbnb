@@ -1,0 +1,45 @@
+.filter-guest {
+    margin-left: 12px;
+    margin-bottom: 15px;
+    padding: 16px;
+}
+
+.filter-guest__title {
+    font-family: 'Mulish Bold';
+    font-size: 14px;
+    line-height: 18px;
+    color: #333333;
+}
+
+.filter-guest__subtitle {
+    font-family: 'Mulish Regular';
+    font-size: 14px;
+    line-height: 18px;
+    color: #BDBDBD;
+    margin-bottom: 12px;
+}
+.filter-guest__counter {
+    display: flex;
+    align-items: center;   
+}
+
+.filter-guest__counter-decrement,
+.filter-guest__counter-increment {
+    font-family: 'Mulish ExtraBold';
+    outline: none;
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background: #ffffff;
+    /*font-size: 20px;
+    line-height: 20px;*/
+    height: 23px;
+    width: 23px;
+}
+
+.filter-guest__counter-counter {
+    font-family: 'Mulish Bold';
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0 10px;
+}

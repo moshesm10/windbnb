@@ -1,13 +1,79 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family:'Montserrat Medium';
+  src: url('./fonts/Montserrat/Montserrat Medium.eot');
+src: url('./fonts/Montserrat/Montserrat Medium.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/Montserrat/Montserrat Medium.woff2') format('woff2'),
+  url('./fonts/Montserrat/Montserrat Medium.woff') format('woff'),
+  url('./fonts/Montserrat/Montserrat Medium.svg#Montserrat Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family:'Montserrat SemiBold';
+  src: url('./fonts/Montserrat/Montserrat SemiBold.eot');
+src: url('./fonts/Montserrat/Montserrat SemiBold.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/Montserrat/Montserrat SemiBold.woff2') format('woff2'),
+  url('./fonts/Montserrat/Montserrat SemiBold.woff') format('woff'),
+  url('./fonts/Montserrat/Montserrat SemiBold.svg#Montserrat SemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
 }
+
+@font-face {
+  font-family:'Montserrat Bold';
+  src: url('./fonts/Montserrat/Montserrat Bold.eot');
+src: url('./fonts/Montserrat/Montserrat Bold.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/Montserrat/Montserrat Bold.woff2') format('woff2'),
+  url('./fonts/Montserrat/Montserrat Bold.woff') format('woff'),
+  url('./fonts/Montserrat/Montserrat Bold.svg#Montserrat Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family:'Mulish ExtraBold';
+  src: url('./fonts/Mulish/Mulish ExtraBold.eot');
+src: url('./fonts/Mulish/Mulish ExtraBold.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/Mulish/Mulish ExtraBold.woff2') format('woff2'),
+  url('./fonts/Mulish/Mulish ExtraBold.woff') format('woff'),
+  url('./fonts/Mulish/Mulish ExtraBold.svg#Mulish ExtraBold') format('svg');
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family:'Mulish Bold';
+  src: url('./fonts/Mulish/Mulish Bold.eot');
+src: url('./fonts/Mulish/Mulish Bold.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/Mulish/Mulish Bold.woff2') format('woff2'),
+  url('./fonts/Mulish/Mulish Bold.woff') format('woff'),
+  url('./fonts/Mulish/Mulish Bold.svg#Mulish Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family:'Mulish Regular';
+  src: local('Mulish Regular'), url('./fonts/Mulish/Mulish Regular.eot');
+src: local('Mulish Regular'), url('./fonts/Mulish/Mulish Regular.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/Mulish/Mulish Regular.woff2') format('woff2'),
+  url('./fonts/Mulish/Mulish Regular.woff') format('woff'),
+  url('./fonts/Mulish/Mulish Regular.svg#Mulish Regular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+

@@ -1,0 +1,45 @@
+/* == Search panel min == */
+
+.search-panel-min {
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.search-panel-min__place,
+.search-panel-min__guest,
+.search-panel-min__search {
+    font-family:'Mulish Regular';
+    margin: 0;
+    height: 100%;
+    background: #FFFFFF;
+    border: none;
+    outline: none;
+    font-size: 14px; 
+    line-height: 23px;
+    padding: 20px 16px;
+    cursor: pointer;
+}
+
+.search-panel-min__place:hover,
+.search-panel-min__guest:hover,
+.search-panel-min__search:hover {
+    background: #F2F2F2;
+}
+
+.search-panel-min__place,
+.search-panel-min__guest {
+    border-right: 1px solid #F2F2F2;
+}
+
+.search-panel-min__place {
+    color: #333333;
+}
+
+.search-panel-min__guest {
+    color: #BDBDBD;
+}
+
+.search-panel-min__search svg {
+    line-height: 17px;
+}

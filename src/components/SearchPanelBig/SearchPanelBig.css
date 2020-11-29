@@ -1,0 +1,76 @@
+.search-panel-big {
+    display: flex;
+    height: 460px;
+    width: 100vw;
+    background: #ffffff;
+    padding-top: 93px;
+    position: absolute;
+    max-width: 1280px;
+}
+
+.search-panel-big__location,
+.search-panel-big__guests {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    position: relative;
+}
+
+.search-panel-big__location-input,
+.search-panel-big__guests-input {
+    font-family:'Mulish Regular';
+    border: none;
+    outline: none;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    padding: 24px 27px 10px;
+    color: #333333;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 40px;
+}
+
+.search-panel-big__location-label,
+.search-panel-big__guests-label {
+    font-family:'Mulish ExtraBold';
+    position: absolute;
+    top: 12px;
+    left: 29px;
+    font-size: 8px;
+    line-height: 11px;
+    text-transform: uppercase;
+    color: #333333;
+}
+
+
+
+.search-panel-big__location-input {
+    border-radius: 16px 0 0 16px;
+}
+
+.search-panel-big__guests-input {
+    border-radius: 0 16px 16px 0;
+}
+
+.button-wrapper {
+    flex: 1;
+}
+
+.search-panel-big__button {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    font-family:'Mulish Bold';
+    font-size: 14px;
+    line-height: 18px;
+    padding: 15px 24px;
+    border: none;
+    outline: none;
+    color: #F2F2F2;
+    background: rgba(235, 87, 87, 0.9);
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+}
+
+.search-panel-big__button svg {
+    margin-right: 10px;
+}

@@ -1,0 +1,26 @@
+.filter-city {
+    display: flex;
+    margin-left: 12px;
+    margin-bottom: 15px;
+}
+
+.filter-city label {
+    padding: 16px;
+    border-radius: 16px;
+}
+
+.filter-city label:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transition: 0.4s;
+}
+
+.filter-city svg {
+    margin-right: 10px;
+}
+
+.filter-city span {
+    color: #4F4F4F;
+    font-family: 'Mulish Regular';
+    font-size: 14px;
+    line-height: 18px;
+}
