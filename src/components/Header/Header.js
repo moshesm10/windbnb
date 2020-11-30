@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {SearchPanelMin} from '../SearchPanelMin/SearchPanelMin';
 import './Header.css';
 
