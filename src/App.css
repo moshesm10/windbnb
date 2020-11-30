@@ -25,6 +25,13 @@ p {
   padding: 30px 13px;
 }
 
+.form-wrapper {
+  position: fixed;
+  width: 100vw;
+  background: rgba(79, 79, 79, 0.4);
+  height: 100vh;
+}
+
 .host-cards {
   display: flex;
   flex-wrap: wrap;

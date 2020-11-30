@@ -4,42 +4,43 @@ import {FilterCity} from '../FilterCity/FilterCity';
 import {FilterGuest} from '../FilterGuest/FilterGuest';
 
 export const SearchPanelBig = (props) => {
-    
-    const [location, setLocation] = useState('Helsinki, Finland');
-    const [guestCounter, setGuestCounter] = useState(0);
-    const [guestAdultCounter, setGuestAdultCounter] = useState(0);
-    const [guestChildrenCounter, setGuestChildrenCounter] = useState(0);
 
-    //const {city, country, guestAdultCounter, guestChildrenCounter, guestCounter} = props.filters
-
-    
-    const filters = {
-        city: location.split(',')[0],
-        country: location.split(',')[1],
-        numOfGuest: guestCounter
-    }
-    
+    const {city, country, guestAdultCounter, guestChildrenCounter,  guestCounter} = props.filters;
+    const {setFilterCity, setFilterCountry, setGuestCounter, setGuestAdultCounter, setGuestChildrenCounter, showBigSearchPanel} = props;
 
     const onChecked = (e) => {
-        //e.target.setAttribute('checked', true);
-        setLocation(e.target.value);
+        
+        const labels = document.querySelectorAll('label');
+        labels.forEach(item => {
+            item.classList.remove('checked');
+        });
+        const input = e.target;
+
+        input.parentNode.classList.add('checked');
+        
+        setFilterCity(input.value.split(',')[0]);
+        setFilterCountry(input.value.split(',')[1].replace(' ', ''));
     }
 
     const detectCurrentCounter = (title, operator) => {
         if (operator === 'increment') {
             if (title === 'Adults') {
                 setGuestAdultCounter(() => guestAdultCounter + 1);
+                setGuestCounter(() => guestCounter + 1);
             }
             if (title === 'Children') {
                 setGuestChildrenCounter(() => guestChildrenCounter + 1);
+                setGuestCounter(() => guestCounter + 1);
             }
         }
         if (operator === 'decrement') {
             if (title === 'Adults' && guestAdultCounter > 0) {
                 setGuestAdultCounter(() => guestAdultCounter - 1);
+                setGuestCounter(() => guestCounter - 1);
             }
             if (title === 'Children' && guestChildrenCounter > 0) {
                 setGuestChildrenCounter(() => guestChildrenCounter - 1);
+                setGuestCounter(() => guestCounter - 1);
             }
         }
     }
@@ -47,13 +48,11 @@ export const SearchPanelBig = (props) => {
     const incrementGuestCounter = (e) => {
             e.preventDefault();
             detectCurrentCounter(e.target.parentNode.dataset.title, 'increment');
-            setGuestCounter(() => guestCounter + 1);
     }
     const decrementGuestCounter = (e) => {
         e.preventDefault();
         if (guestCounter > 0) {
             detectCurrentCounter(e.target.parentNode.dataset.title, 'decrement');
-            setGuestCounter(() => guestCounter - 1);
         }
     }
 
@@ -82,8 +81,8 @@ export const SearchPanelBig = (props) => {
     });
 
     const onClickHandler = (e) => {
-        props.showBigSearchPanel(e);
-        props.getFilters(filters);
+        showBigSearchPanel(e);
+        setGuestCounter(() => guestCounter);
     }
 
     return (
@@ -91,7 +90,7 @@ export const SearchPanelBig = (props) => {
             <div className='search-panel-big'>
                 <div className='search-panel-big__location'>
                     <label className='search-panel-big__location-label'>location</label>
-                    <input readOnly type='text' className='search-panel-big__location-input' value={location} />
+                    <input readOnly type='text' className='search-panel-big__location-input' value={city || country ? `${city}, ${country}` : 'Add location'} />
                     {arr}
                 </div>
                 <div className='search-panel-big__guests'>

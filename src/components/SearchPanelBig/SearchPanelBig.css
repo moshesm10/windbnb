@@ -3,9 +3,16 @@
     height: 460px;
     width: 100vw;
     background: #ffffff;
-    padding-top: 93px;
+    padding: 93px 100%;
     position: absolute;
     max-width: 1280px;
+}
+
+#filter-form {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    animation: panel .5s ease-out;
 }
 
 .search-panel-big__location,
@@ -41,8 +48,6 @@
     color: #333333;
 }
 
-
-
 .search-panel-big__location-input {
     border-radius: 16px 0 0 16px;
 }
@@ -73,4 +78,20 @@
 
 .search-panel-big__button svg {
     margin-right: 10px;
+}
+
+.checked {
+    background: rgba(0, 0, 0, 0.1);
+    transition: 0.4s;
+}
+
+@keyframes panel {
+    0% {
+        top: -500px;
+        opacity: 0;
+    }
+    100% {
+        top: 0;
+        opacity: 1;
+    }
 }

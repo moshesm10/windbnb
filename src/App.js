@@ -8,23 +8,23 @@ import {HostCard} from './components/HostCard/HostCard';
 function App() {
 
   // Data
-  const [data, setData] = useState(false);
-  const [filtredData, setFiltredData] = useState(false);
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [data, setData] = useState(false),
+        [filtredData, setFiltredData] = useState(false),
+        [error, setError] = useState(null),
+        [isLoaded, setIsLoaded] = useState(false);
 
   // Visible
-  const [visibleBigSearchPanel, setVisibleBigSearchPanel] = useState(false);
+  const [visibleBigSearchPanel, setVisibleBigSearchPanel] = useState(false),
+        [visibleLocationSelector, setVisibleLocationSelector] = useState(false),
+        [visibleGuestsSelector, setVisibleGuestsSelector] = useState();
+  
 
   // Filters
-  const [filterCity, setFilterCity] = useState('Helsinki');
-  const [filterCountry, setFilterCountry] = useState('Finland');
-  //const [guestAdultCounter, setGuestAdultCounter] = useState(0);
-  //const [guestChildrenCounter, setGuestChildrenCounter] = useState(0);
-  //const [guestCounter, setGuestCounter] = useState(0);
-
-  const [filterNumOfGuest, setFilterNumOfGuest] = useState(0);
-
+  const [filterCity, setFilterCity] = useState(''),
+        [filterCountry, setFilterCountry] = useState(''),
+        [guestAdultCounter, setGuestAdultCounter] = useState(0),
+        [guestChildrenCounter, setGuestChildrenCounter] = useState(0),
+        [guestCounter, setGuestCounter] = useState(0);
 
 
     useEffect(() => {
@@ -34,6 +34,7 @@ function App() {
           (result) => {
             setIsLoaded(true);
             setData(result);
+            setFiltredData(result);
           },
           (error) => {
             setIsLoaded(true);
@@ -43,50 +44,86 @@ function App() {
     }, []);
 
     useEffect(() => {
+
+      // todo - нужно выбрать триггер по которому будут обновляться данные на экране
+
       if (data) {  
         console.log(data);
-      let arrData = [];
+        let arrData = [];
+
         data.forEach((item) => {
-          if (item.city === filterCity && item.maxGuests >= filterNumOfGuest) {
+          if (item.city === filterCity && item.maxGuests >= guestCounter) {
             arrData.push(item);
           }
         });
+
         setFiltredData(() => arrData);
         
+        if (arrData.length < 1) {
+          setFiltredData(() => false);
+        }
       }
-    }, [filterCity, filterNumOfGuest])
+    }, [filterCity, guestCounter]); 
 
   const showBigSearchPanel = (e) => {
     e.preventDefault();
+
+    let overflow = document.querySelector('body');
+    if (overflow.style.overflow === 'hidden') {
+      overflow.style.overflow = '';
+    } else {
+      overflow.style.overflow = 'hidden';
+    }
     setVisibleBigSearchPanel(() => !visibleBigSearchPanel)
   };
 
-  
+  /*
+  const statusMessage = () => {
+    if (error) {
+      return error;
+    }
+    if (filtredData < 1) {
+      return '';
+    }
+    if (isLoaded === false) {
+      return 'Loading...';
+    }
+  }
+  */
   const filters = {
     city: filterCity,
     country: filterCountry,
-    numOfGuest: filterNumOfGuest
+    guestCounter: guestCounter,
+    guestAdultCounter: guestAdultCounter,
+    guestChildrenCounter: guestChildrenCounter
   }
 
-  const getFilters = (filters) => {
-    setFilterCity(() => filters.city);
-    setFilterCountry(() => filters.country);
-    setFilterNumOfGuest(() => filters.numOfGuest);
-  };
-
-
-
   return (
+    <>
+    
+    {
+      visibleBigSearchPanel ? 
+      <div className='form-wrapper'>
+        <SearchPanelBig 
+          filters={filters} 
+          setFilterCity={setFilterCity}
+          setFilterCountry={setFilterCountry}
+          setGuestCounter={setGuestCounter}
+          setGuestAdultCounter={setGuestAdultCounter}
+          setGuestChildrenCounter={setGuestChildrenCounter}
+          showBigSearchPanel={showBigSearchPanel}/> 
+      </div> : ''
+    }
+    
     <div className='container'>
-      {visibleBigSearchPanel ? <SearchPanelBig getFilters={getFilters} showBigSearchPanel={showBigSearchPanel}/> : ''}
+      
       <Header filters={filters} showBigSearchPanel={showBigSearchPanel}/>
-      <TitleAndStatus  />
+      <TitleAndStatus numOfStays={filtredData.length} />
       <section className='host-cards'>
-        {
-        filtredData ? filtredData.map((item, i) => <HostCard key={i} title={item.title} photo={item.photo}/>) : ''
-        }
+        {filtredData ? filtredData.map((item, i) => <HostCard key={i} title={item.title} photo={item.photo}superHost={item.superHost}rating={item.rating}type={item.type}beds={item.beds}/>) : <h1 style={{margin: '25vh auto', color: '#dddddd'}}>No such data exist</h1>}
       </section>
     </div>
+    </>
   );
 }
 
