@@ -3,8 +3,8 @@ import './TitleAndStatus.css';
 
 export const TitleAndStatus = (props) => {
     const {numOfStays} = props;
-    console.log('numOfStays', numOfStays);
 
+    // == content rules ==
     const content = () => {
         let num = 0;
         let word = 'stays';

@@ -1,6 +1,6 @@
+/* == Search panel big == */
+
 .search-panel-big {
-    display: flex;
-    height: 460px;
     width: 100vw;
     background: #ffffff;
     padding: 93px 100%;
@@ -15,6 +15,15 @@
     animation: panel .5s ease-out;
 }
 
+.input-wrapper {
+    display: flex;
+}
+
+.selector-wrapper {
+    display: flex;
+    max-width: 80%;
+}
+
 .search-panel-big__location,
 .search-panel-big__guests {
     display: flex;
@@ -26,11 +35,11 @@
 .search-panel-big__location-input,
 .search-panel-big__guests-input {
     font-family:'Mulish Regular';
-    border: none;
+    border: 1px solid #ffffff;
     outline: none;
     box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
     padding: 24px 27px 10px;
-    color: #333333;
+    color: #bdbdbd;
     font-size: 14px;
     line-height: 18px;
     margin-bottom: 40px;
@@ -57,7 +66,7 @@
 }
 
 .button-wrapper {
-    flex: 1;
+    flex: .5;
 }
 
 .search-panel-big__button {
@@ -66,8 +75,8 @@
     align-items: center;
     font-family:'Mulish Bold';
     font-size: 14px;
-    line-height: 18px;
-    padding: 15px 24px;
+    line-height: 19px;
+    padding: 17px 24px;
     border: none;
     outline: none;
     color: #F2F2F2;
@@ -83,6 +92,12 @@
 .checked {
     background: rgba(0, 0, 0, 0.1);
     transition: 0.4s;
+}
+
+.active-input {
+    border: 1px solid black;
+    color: #333333;
+    transition: .5s;
 }
 
 @keyframes panel {

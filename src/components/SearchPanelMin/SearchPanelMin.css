@@ -32,12 +32,9 @@
     border-right: 1px solid #F2F2F2;
 }
 
-.search-panel-min__place {
+.search-panel-min__place,
+.search-panel-min__guest  {
     color: #333333;
-}
-
-.search-panel-min__guest {
-    color: #BDBDBD;
 }
 
 .search-panel-min__search svg {

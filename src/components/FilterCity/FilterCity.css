@@ -1,3 +1,5 @@
+/* == Filter city == */
+
 .filter-city {
     display: flex;
     margin-left: 12px;
@@ -10,8 +12,9 @@
 }
 
 .filter-city label:hover {
-    background: rgba(0, 0, 0, 0.1);
+    background: #dfdfdf;
     transition: 0.4s;
+    cursor: pointer;
 }
 
 .filter-city svg {

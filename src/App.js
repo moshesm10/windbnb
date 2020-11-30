@@ -7,19 +7,19 @@ import {HostCard} from './components/HostCard/HostCard';
 
 function App() {
 
-  // Data
-  const [data, setData] = useState(false),
-        [filtredData, setFiltredData] = useState(false),
-        [error, setError] = useState(null),
-        [isLoaded, setIsLoaded] = useState(false);
+  // == States ==
 
-  // Visible
+  // Data states
+  const [data, setData] = useState(false),
+        [filtredData, setFiltredData] = useState(false);
+
+  // Visible states
   const [visibleBigSearchPanel, setVisibleBigSearchPanel] = useState(false),
         [visibleLocationSelector, setVisibleLocationSelector] = useState(false),
-        [visibleGuestsSelector, setVisibleGuestsSelector] = useState();
+        [visibleGuestsSelector, setVisibleGuestsSelector] = useState(false);
   
 
-  // Filters
+  // Filters states
   const [filterCity, setFilterCity] = useState(''),
         [filterCountry, setFilterCountry] = useState(''),
         [guestAdultCounter, setGuestAdultCounter] = useState(0),
@@ -27,47 +27,43 @@ function App() {
         [guestCounter, setGuestCounter] = useState(0);
 
 
-    useEffect(() => {
-      fetch("./stays.json")
-        .then(res => res.json())
-        .then(
-          (result) => {
-            setIsLoaded(true);
-            setData(result);
-            setFiltredData(result);
-          },
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        )
-    }, []);
-
-    useEffect(() => {
-
-      // todo - нужно выбрать триггер по которому будут обновляться данные на экране
-
-      if (data) {  
-        console.log(data);
-        let arrData = [];
-
-        data.forEach((item) => {
-          if (item.city === filterCity && item.maxGuests >= guestCounter) {
-            arrData.push(item);
-          }
-        });
-
-        setFiltredData(() => arrData);
-        
-        if (arrData.length < 1) {
-          setFiltredData(() => false);
+  // == Download data ==
+  useEffect(() => {
+    fetch("./stays.json")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setData(result);
+          setFiltredData(result);
+        },
+        (error) => {
+          alert(error);
         }
-      }
-    }, [filterCity, guestCounter]); 
+      )
+  }, []);
 
+  // == Set filtered data ==
+  useEffect(() => {
+    if (data) {  
+      let arrData = [];
+
+      data.forEach((item) => {
+        if (item.city === filterCity && item.maxGuests >= guestCounter) {
+          arrData.push(item);
+        }
+      });
+
+      setFiltredData(() => arrData);
+      
+       if (arrData.length < 1) {
+        setFiltredData(() => false);
+      }
+    }
+  }, [filterCity, guestCounter]); 
+
+  // == OnClick show/hide function ==
   const showBigSearchPanel = (e) => {
     e.preventDefault();
-
     let overflow = document.querySelector('body');
     if (overflow.style.overflow === 'hidden') {
       overflow.style.overflow = '';
@@ -90,6 +86,8 @@ function App() {
     }
   }
   */
+ 
+  // == Filter object  ==
   const filters = {
     city: filterCity,
     country: filterCountry,
@@ -100,29 +98,28 @@ function App() {
 
   return (
     <>
-    
-    {
-      visibleBigSearchPanel ? 
-      <div className='form-wrapper'>
-        <SearchPanelBig 
-          filters={filters} 
-          setFilterCity={setFilterCity}
-          setFilterCountry={setFilterCountry}
-          setGuestCounter={setGuestCounter}
-          setGuestAdultCounter={setGuestAdultCounter}
-          setGuestChildrenCounter={setGuestChildrenCounter}
-          showBigSearchPanel={showBigSearchPanel}/> 
-      </div> : ''
-    }
-    
-    <div className='container'>
-      
-      <Header filters={filters} showBigSearchPanel={showBigSearchPanel}/>
-      <TitleAndStatus numOfStays={filtredData.length} />
-      <section className='host-cards'>
-        {filtredData ? filtredData.map((item, i) => <HostCard key={i} title={item.title} photo={item.photo}superHost={item.superHost}rating={item.rating}type={item.type}beds={item.beds}/>) : <h1 style={{margin: '25vh auto', color: '#dddddd'}}>No such data exist</h1>}
-      </section>
-    </div>
+      {visibleBigSearchPanel ? 
+        <div className='form-wrapper'>
+          <SearchPanelBig 
+            filters={filters} 
+            setFilterCity={setFilterCity}
+            setFilterCountry={setFilterCountry}
+            setGuestCounter={setGuestCounter}
+            setGuestAdultCounter={setGuestAdultCounter}
+            setGuestChildrenCounter={setGuestChildrenCounter}
+            showBigSearchPanel={showBigSearchPanel}
+            visibleLocationSelector={visibleLocationSelector}
+            visibleGuestsSelector={visibleGuestsSelector}
+            setVisibleLocationSelector={setVisibleLocationSelector}
+            setVisibleGuestsSelector={setVisibleGuestsSelector}/> 
+        </div> : ''}
+      <div className='container'>
+        <Header filters={filters} setVisibleLocationSelector={setVisibleLocationSelector} setVisibleGuestsSelector={setVisibleGuestsSelector} showBigSearchPanel={showBigSearchPanel} />
+        <TitleAndStatus numOfStays={filtredData.length} />
+        <section className='host-cards'>
+          {filtredData ? filtredData.map((item, i) => <HostCard key={i} title={item.title} photo={item.photo}superHost={item.superHost}rating={item.rating}type={item.type}beds={item.beds}/>) : <h1 style={{margin: '25vh auto', color: '#dddddd'}}>No such data exist</h1>}
+        </section>
+      </div>
     </>
   );
 }

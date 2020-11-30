@@ -1,3 +1,5 @@
+/* == Filter guest == */
+
 .filter-guest {
     margin-left: 12px;
     margin-bottom: 15px;
@@ -35,6 +37,14 @@
     line-height: 20px;*/
     height: 23px;
     width: 23px;
+}
+
+.filter-guest__counter-decrement:hover,
+.filter-guest__counter-increment:hover {
+    border: 1px solid #828282;
+    background: #dfdfdf;
+    cursor: pointer;
+    transition: 0.4s;
 }
 
 .filter-guest__counter-counter {
