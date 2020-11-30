@@ -7,7 +7,7 @@ export const HostCard = (props) => {
 
     return (
         <div className='host-card'>
-            <img className='host-card__img' src={photo}></img>
+            <img className='host-card__img' alt={`image ${title}`} src={photo}></img>
             <div className='host-card__status'>
                 {superHost ? <div className='host-card__status-super-host'>Super host</div> : ''}
                 <div className='host-card__status-type-and-beds'>{type}{beds ? <span> . {beds} beds</span> : ''}</div>

@@ -47,11 +47,20 @@ function App() {
     if (data) {  
       let arrData = [];
 
-      data.forEach((item) => {
-        if (item.city === filterCity && item.maxGuests >= guestCounter) {
-          arrData.push(item);
-        }
-      });
+      if (filterCity === '') {
+        data.forEach((item) => {
+          if (item.maxGuests >= guestCounter) {
+            arrData.push(item);
+          }
+        });
+      } else {
+        data.forEach((item) => {
+          if (item.city === filterCity && item.maxGuests >= guestCounter) {
+            arrData.push(item);
+          }
+        });
+      }
+      
 
       setFiltredData(() => arrData);
       
@@ -72,20 +81,6 @@ function App() {
     }
     setVisibleBigSearchPanel(() => !visibleBigSearchPanel)
   };
-
-  /*
-  const statusMessage = () => {
-    if (error) {
-      return error;
-    }
-    if (filtredData < 1) {
-      return '';
-    }
-    if (isLoaded === false) {
-      return 'Loading...';
-    }
-  }
-  */
  
   // == Filter object  ==
   const filters = {

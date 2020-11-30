@@ -17,6 +17,7 @@
 
 .input-wrapper {
     display: flex;
+    margin: 0 13px;
 }
 
 .selector-wrapper {
@@ -91,13 +92,17 @@
 
 .checked {
     background: rgba(0, 0, 0, 0.1);
-    transition: 0.4s;
+    transition: .4s;
 }
 
 .active-input {
-    border: 1px solid black;
+    border: 1px solid #bdbdbd;
     color: #333333;
-    transition: .5s;
+    transition: .4s;
+}
+
+.mobile-description {
+    display: none;
 }
 
 @keyframes panel {
@@ -108,5 +113,52 @@
     100% {
         top: 0;
         opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .search-panel-big {
+        height: 70vh;
+        padding: 50px 100% 96px;
+    }
+
+    .input-wrapper {
+        flex-direction: column;
+    }
+    .search-panel-big__location-input,
+    .search-panel-big__guests-input {
+        margin: 0 13px;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-appearance: none;
+    }
+    .search-panel-big__location-input {
+        border-radius: 16px 16px 0 0 ;
+    }
+    
+    .search-panel-big__guests-input {
+        border-radius: 0 0 16px 16px;
+    }
+    .search-panel-big__location-label,
+    .search-panel-big__guests-label {
+        left: 42px;
+    }
+    .selector-wrapper {
+        flex-direction: column;
+        margin-left: 10px;
+    }
+    .button-wrapper {
+        position: relative;
+        top: 55vh;
+    }
+
+    .mobile-description {
+        display: flex;
+        margin: 0 13px 16px;
+        justify-content: space-between;
+        font-family:'Mulish ExtraBold';
+        font-size: 12px;
+        line-height: 15px;
+        color: #333333;
     }
 }

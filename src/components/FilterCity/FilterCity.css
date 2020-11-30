@@ -9,6 +9,8 @@
 .filter-city label {
     padding: 16px;
     border-radius: 16px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
 }
 
 .filter-city label:hover {

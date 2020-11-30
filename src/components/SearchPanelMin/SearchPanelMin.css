@@ -19,6 +19,8 @@
     line-height: 23px;
     padding: 20px 16px;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
 }
 
 .search-panel-min__place:hover,

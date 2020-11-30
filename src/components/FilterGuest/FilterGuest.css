@@ -30,13 +30,12 @@
     font-family: 'Mulish ExtraBold';
     outline: none;
     border: 1px solid #828282;
-    box-sizing: border-box;
     border-radius: 4px;
     background: #ffffff;
-    /*font-size: 20px;
-    line-height: 20px;*/
     height: 23px;
     width: 23px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
 }
 
 .filter-guest__counter-decrement:hover,
@@ -52,4 +51,12 @@
     font-size: 14px;
     line-height: 18px;
     margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+    .filter-guest__counter-decrement:hover,
+    .filter-guest__counter-increment:hover {
+        border: 1px solid #828282;
+        background: none;
+    }
 }

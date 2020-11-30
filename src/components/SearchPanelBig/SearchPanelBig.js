@@ -149,6 +149,14 @@ export const SearchPanelBig = (props) => {
         <form id='filter-form'>
             <div className='search-panel-big'>
                 <div className='input-wrapper'>
+                    <div className='mobile-description'>
+                        <div>Edit your search</div>
+                        <div className='close-button' onClick={onClickHandler}>
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.1875 1.74688L10.4406 0L6.09375 4.34687L1.74688 0L0 1.74688L4.34687 6.09375L0 10.4406L1.74688 12.1875L6.09375 7.84062L10.4406 12.1875L12.1875 10.4406L7.84062 6.09375L12.1875 1.74688Z" fill="#4D5357"/>
+                            </svg>
+                        </div>
+                    </div>
                     <div className='search-panel-big__location'>
                         <label className='search-panel-big__location-label'>location</label>
                         <input name='location' onClick={setActiveInput} readOnly type='text' className='search-panel-big__location-input' value={city || country ? `${city}, ${country}` : 'Add location'} />
