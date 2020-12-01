@@ -163,7 +163,7 @@ export const SearchPanelBig = (props) => {
                     </div>
                     <div className='search-panel-big__guests'>
                         <label className='search-panel-big__guests-label'>Guests</label>
-                        <input name='guests' onClick={setActiveInput} readOnly type='text' name='guests' className='search-panel-big__guests-input' value={guestCounter < 1 ? 'Add guest' : guestCounter} />
+                        <input name='guests' onClick={setActiveInput} readOnly type='text' className='search-panel-big__guests-input' value={guestCounter < 1 ? 'Add guest' : guestCounter} />
                     </div>
                     <div className='button-wrapper'>
                         <button 

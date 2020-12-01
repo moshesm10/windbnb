@@ -68,7 +68,7 @@ function App() {
         setFiltredData(() => false);
       }
     }
-  }, [filterCity, guestCounter]); 
+  }, [data, filterCity, guestCounter]); 
 
   // == OnClick show/hide function ==
   const showBigSearchPanel = (e) => {
