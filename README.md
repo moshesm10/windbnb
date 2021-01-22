@@ -8,7 +8,7 @@
 
 <div align="center">
   <h3>
-    <a href="http://a0413857.xsph.ru/windbnb/">
+    <a href="https://moshesm.ru/windbnb/">
       Demo
     </a>
     <span> | </span>
